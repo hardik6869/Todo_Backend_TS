@@ -23,7 +23,7 @@ const updateTodo = asyncHandler(async(req,res)=> {
 
 const deleteTodo = asyncHandler(async(req,res)=> {
     const todo = await Todo.findByIdAndDelete(req.params.id);
-    if (todo) {
+    if (!todo) {
         res.status(400);
         throw new Error('Todo Not Found');
     }
